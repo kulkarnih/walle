@@ -1,0 +1,67 @@
+name:                walle
+version:             0.1.0.0
+github:              "kulkarnih/walle"
+license:             BSD3
+author:              "Hariprasad Kulkarni"
+maintainer:          "kulkarni.hariprasad@gmail.com"
+copyright:           "2023 Hariprasad Kulkarni"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/kulkarnih/walle#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+default-extensions:
+- NoImplicitPrelude
+- OverloadedStrings
+
+library:
+  source-dirs: src
+  dependencies:
+  - http-conduit
+  - rio
+
+executables:
+  walle-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - rio
+    - walle
+
+tests:
+  walle-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - walle

@@ -1,0 +1,74 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           walle
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/kulkarnih/walle#readme>
+homepage:       https://github.com/kulkarnih/walle#readme
+bug-reports:    https://github.com/kulkarnih/walle/issues
+author:         Hariprasad Kulkarni
+maintainer:     kulkarni.hariprasad@gmail.com
+copyright:      2023 Hariprasad Kulkarni
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/kulkarnih/walle
+
+library
+  exposed-modules:
+      App
+      Downloader
+  other-modules:
+      Paths_walle
+  hs-source-dirs:
+      src
+  default-extensions:
+      NoImplicitPrelude
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , http-conduit
+    , rio
+  default-language: Haskell2010
+
+executable walle-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_walle
+  hs-source-dirs:
+      app
+  default-extensions:
+      NoImplicitPrelude
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , rio
+    , walle
+  default-language: Haskell2010
+
+test-suite walle-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_walle
+  hs-source-dirs:
+      test
+  default-extensions:
+      NoImplicitPrelude
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , walle
+  default-language: Haskell2010
